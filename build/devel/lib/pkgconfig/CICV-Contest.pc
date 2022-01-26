@@ -1,0 +1,8 @@
+prefix=/home/shw/catkin_CICV/src/CICV-Contest/build/devel
+
+Name: CICV-Contest
+Description: Description of CICV-Contest
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
