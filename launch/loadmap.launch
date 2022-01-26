@@ -5,8 +5,6 @@
 
     <!-- load map by map_server -->
     <node name="map_server_CICV" pkg="map_server" type="map_server" args="$(find CICV-Contest)/task9-新增样例数据2/task9-样例数据2/map.yaml" output="screen" />
-    <!-- nodes -->
-    <node pkg="CICV-Contest" type="main_node" name="main_node" args="--log_dir=$(find CICV-Contest)/log" />
 
 
 </launch>

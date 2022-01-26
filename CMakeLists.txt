@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   nav_msgs
+  geometry_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -134,7 +135,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(main_node src/main.cpp src/planner.cpp)
+add_executable(main_node src/main.cpp src/planner.cpp src/visualization.cpp) 
 target_link_libraries(main_node
   ${catkin_LIBRARIES}
 )

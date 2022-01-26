@@ -4,5 +4,7 @@ Link: http://www.china-icv.cn/index.php/conference
 
 Task #9
 
+Dependencies:
 
-
+- Eigen
+- osqp

@@ -1,6 +1,11 @@
 #ifndef DATA_STRUCTURE_H_
 #define DATA_STRUCTURE_H_
 
+#include <vector>
+
+#include <iostream>
+using namespace std;
+
 namespace CICV_NS
 {
     struct State
@@ -15,6 +20,8 @@ namespace CICV_NS
         State state_;
         Node *next_node_;
     };
+
+    using Traj = std::vector<State>; // trajectory
 }
 
 #endif
