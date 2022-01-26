@@ -1,7 +1,10 @@
 #include <iostream>
+#include <string>
 #include <memory>
+#include <sys/stat.h>
 
 #include <ros/ros.h>
+#include <ros/package.h>
 #include <ros/publisher.h>
 #include <ros/subscriber.h>
 #include <nav_msgs/OccupancyGrid.h>
@@ -11,6 +14,8 @@
 #include <Eigen/Dense>
 #include <Eigen/Core>
 #include <Eigen/Geometry>
+
+#include <glog/logging.h>
 
 #include "planner.h"
 
@@ -80,6 +85,25 @@ void cb_end_state(const geometry_msgs::PoseStampedConstPtr &msg)
 
 int main(int argc, char **argv)
 {
+    std::string base_dir = ros::package::getPath("CICV-Contest");
+    auto log_dir = base_dir + "/log";
+    if (0 != access(log_dir.c_str(), 0))
+    {
+        // if this folder not exist, create a new one.
+        mkdir(log_dir.c_str(), 0777);
+    }
+
+    google::InitGoogleLogging(argv[0]);
+    FLAGS_colorlogtostderr = true;
+    FLAGS_stderrthreshold = google::INFO;
+    FLAGS_log_dir = log_dir;
+    FLAGS_logbufsecs = 0;
+    FLAGS_max_log_size = 1000;
+    FLAGS_stop_logging_if_full_disk = true;
+
+    DLOG(INFO) << "debug mode";
+    LOG(INFO) << "not debug mode";
+
     ros::init(argc, argv, "main_node");
     ros::NodeHandle nh;
 

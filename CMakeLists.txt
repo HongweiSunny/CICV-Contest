@@ -3,6 +3,9 @@ project(CICV-Contest)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
+add_definitions(-std=c++11 -g -o3)
+set(CMAKE_CXX_FLAGS " -Wall -Wextra ${CMAKE_CXX_FLAGS}")
+set(CMAKE_BUILD_TYPE "Release")
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -13,6 +16,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   nav_msgs
   geometry_msgs
+  roslib
 )
 
 ## System dependencies are found with CMake's conventions
@@ -136,7 +140,7 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(main_node src/main.cpp src/planner.cpp src/visualization.cpp) 
-target_link_libraries(main_node
+target_link_libraries(main_node glog
   ${catkin_LIBRARIES}
 )
 
